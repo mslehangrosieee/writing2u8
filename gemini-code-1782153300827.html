@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Tiếng Anh cùng Ms Lê Hằng</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #8854C0, #FDCB6E, #00C9A7);
+            --correct-color: #00D26A;
+            --wrong-color: #FF4757;
+            --card-bg: #ffffff;
+            --text-color: #2d3436;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--primary-bg);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            position: relative;
+            padding: 20px 10px;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Floating Pattern Overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43 0c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 9c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm1-51.3c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM72 13c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM19 76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm37-52c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'/%3E%3C/g%3E%3C/svg%3E");
+            animation: patternFloat 30s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes patternFloat {
+            0% { background-position: 0 0; }
+            100% { background-position: 400px 400px; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+
+        header h5 {
+            font-size: 1rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-top: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .alert-banner {
+            background: #fff8db;
+            border-left: 6px solid #f1c40f;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-bottom: 35px;
+            font-weight: 700;
+            color: #c0392b;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .exercise-title {
+            background: #2d3436;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 0px rgba(0, 0, 0, 0.08), 0 15px 25px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            color: #2d3436;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        @media(min-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-btn {
+            background: #f7f9fa;
+            border: 2px solid #e2e8f0;
+            padding: 15px 20px;
+            border-radius: 18px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0 #e2e8f0;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #cbd5e1;
+            background: #edf2f7;
+        }
+
+        .option-btn:active:not(.disabled) {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #cbd5e1;
+        }
+
+        .option-btn.correct {
+            background: var(--correct-color) !important;
+            color: #fff !important;
+            border-color: #00b355 !important;
+            box-shadow: 0 5px 0 #008f43 !important;
+        }
+
+        .option-btn.wrong {
+            background: var(--wrong-color) !important;
+            color: #fff !important;
+            border-color: #e03d4c !important;
+            box-shadow: 0 5px 0 #b82d39 !important;
+        }
+
+        .disabled {
+            pointer-events: none;
+        }
+
+        /* Explanations block */
+        .explanation-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            background: #f0f7ff;
+            border-left: 6px solid #3498db;
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .explanation-box h4 {
+            color: #2980b9;
+            margin-bottom: 8px;
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .explanation-content {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: #34495e;
+        }
+
+        .explanation-content p {
+            margin-bottom: 6px;
+        }
+
+        .explanation-content strong {
+            color: #2c3e50;
+        }
+
+        /* Shake animation */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom widgets for Q29, Q30 CSS Graphic elements */
+        .sign-widget {
+            background: #ffec85;
+            border: 4px dashed #ff9f43;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 900;
+            color: #d35400;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 0 #f39c12;
+        }
+
+        .phone-widget {
+            background: #e5ddd5;
+            border: 12px solid #333;
+            border-radius: 24px;
+            padding: 15px;
+            max-width: 320px;
+            margin: 15px auto;
+            box-shadow: 0 8px 0 #222;
+        }
+
+        .phone-msg {
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+        }
+
+        .phone-msg.sent {
+            background: #dcf8c6;
+            margin-left: 20px;
+        }
+
+        /* Submit Button Area */
+        .submit-wrapper {
+            text-align: center;
+            margin: 40px 0 60px;
+        }
+
+        .action-btn {
+            background: #ff9f43;
+            color: #fff;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.4rem;
+            font-weight: 900;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #e67e22;
+            transition: all 0.1s ease;
+        }
+
+        .action-btn:hover {
+            background: #ffa852;
+        }
+
+        .action-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #e67e22;
+        }
+
+        /* Overlay Popup */
+        .popup {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .popup.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .popup-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .popup.active .popup-card {
+            transform: scale(1);
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .popup-score {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #8854C0;
+            margin-bottom: 15px;
+        }
+
+        .popup-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        canvas #confetti {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+    <header>
+        <h5>Giáo viên tạo: Ms Lê Hằng English</h5>
+        <h1>BÀI KIỂM TRA TƯƠNG TÁC THÔNG MINH</h1>
+    </header>
+
+    <div class="alert-banner">
+        ⚠️ LỜI NHẮC CỰC KỲ QUAN TRỌNG ⚠️<br>
+        Chỉ có đọc kỹ giải thích ngay sau mỗi câu, sau đó ghi lại từ vựng/cấu trúc mới vào vở để học thì mới thực sự giỏi lên.<br>
+        Làm cho xong mà không đọc giải thích hay đọc qua loa không ghi chép thì chỉ tốn thời gian vô ích!<br>
+        <span style="color:#e67e22;">* Kéo tới đâu, làm tới đó! *</span>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <div class="submit-wrapper">
+        <button class="action-btn" onclick="submitQuiz()">Nộp Bài Tổng Kết Điểm</button>
+    </div>
+</div>
+
+<div class="popup" id="score-popup">
+    <div class="popup-card">
+        <div class="popup-title" id="p-title">Kết Quả Bài Làm</div>
+        <div class="popup-score" id="p-score">0/0</div>
+        <div class="popup-text" id="p-text">Lời nhận xét sẽ xuất hiện tại đây...</div>
+        <button class="action-btn" style="font-size:1.1rem; padding:10px 25px; box-shadow: 0 4px 0 #e67e22;" onclick="closePopup()">Đóng lại</button>
+    </div>
+</div>
+
+<script>
+    // Audio synthesis setup using Web Audio API
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playSound(type) {
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        if (type === 'correct') {
+            // Ding sound
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+            osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+            gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.4);
+        } else {
+            // Téo tèo tèo / Wrong sound
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.3);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.4);
+        }
+    }
+
+    // Confetti simulation logic
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let confettiPieces = [];
+    let activeConfetti = false;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function spawnConfetti() {
+        activeConfetti = true;
+        confettiPieces = [];
+        for (let i = 0; i < 100; i++) {
+            confettiPieces.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                r: Math.random() * 6 + 4,
+                d: Math.random() * canvas.height,
+                color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+                tilt: Math.random() * 10 - 5,
+                tiltAngleIncremental: Math.random() * 0.07 + 0.02,
+                tiltAngle: 0
+            });
+        }
+        animateConfetti();
+    }
+
+    function animateConfetti() {
+        if (!activeConfetti) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let remaining = false;
+        confettiPieces.forEach((p) => {
+            p.tiltAngle += p.tiltAngleIncremental;
+            p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+            p.x += Math.sin(p.tiltAngle);
+            p.tilt = Math.sin(p.tiltAngle - confettiPieces.indexOf(p) / 3) * 15;
+
+            if (p.y <= canvas.height) remaining = true;
+
+            ctx.beginPath();
+            ctx.lineWidth = p.r;
+            ctx.strokeStyle = p.color;
+            ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+            ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+            ctx.stroke();
+        });
+        if (remaining) {
+            requestAnimationFrame(animateConfetti);
+        } else {
+            activeConfetti = false;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    // Comprehensive Questions Database covering Exercise 24 to 30 completely with no omission
+    const quizData = [
+        // EXERCISE 24
+        {
+            ex: "Exercise 24: Make sentences from the given words.",
+            q: "Sắp xếp hoặc chọn câu viết đúng từ các từ gợi ý: villagers/ harvesting/ rice/ combine harvester/ field.",
+            options: [
+                "The villagers are harvesting rice with a combine harvester in the field.",
+                "The villagers harvesting rice with a combine harvester on field.",
+                "Villagers is harvesting rice with a combine harvester into the field.",
+                "The villagers are harvest rice by a combine harvester in the field."
+            ],
+            correct: "The villagers are harvesting rice with a combine harvester in the field.",
+            explain: "1. Dịch nghĩa câu: Dân làng đang thu hoạch lúa bằng máy gặt đập liên hợp trên cánh đồng.<br>2. Phân tích ngữ pháp: Câu sử dụng thì Hiện tại tiếp diễn (S + am/is/are + V-ing) diễn tả hành động đang xảy ra. Cấu trúc 'harvest something with a machine' (thu hoạch cái gì bằng máy móc gì) và giới từ 'in the field' (trên cánh đồng).<br>3. Tại sao các câu khác sai: Câu B thiếu động từ tobe 'are'. Câu C dùng sai tobe 'is' cho chủ ngữ số nhiều và sai giới từ 'into'. Câu D dùng sai dạng động từ 'harvest' nguyên mẫu."
+        },
+        {
+            ex: "Exercise 24: Make sentences from the given words.",
+            q: "Sắp xếp hoặc chọn câu viết đúng từ các từ gợi ý: Children/ help/ parents/ milk cows/ feed pigs.",
+            options: [
+                "Children help their parents to milk cows and feed pigs.",
+                "Children helps their parents milk cows and feed pigs.",
+                "Children help parents milked cows and feeding pigs.",
+                "Children are help their parents to milk cows and feed pigs."
+            ],
+            correct: "Children help their parents to milk cows and feed pigs.",
+            explain: "1. Dịch nghĩa câu: Trẻ em giúp đỡ bố mẹ của chúng vắt sữa bò và cho lợn ăn.<br>2. Phân tích cấu trúc: Cấu trúc 'Help somebody to do something' hoặc 'Help somebody do something' (Giúp ai làm việc gì). Chủ ngữ 'Children' là danh từ số nhiều nên động từ 'help' giữ nguyên.<br>3. Tại sao các câu khác sai: Câu B sai vì chia 'helps' thêm s cho danh từ số nhiều. Câu C dùng sai thì 'milked' và 'feeding'. Câu D thừa động từ tobe 'are'."
+        },
+        {
+            ex: "Exercise 24: Make sentences from the given words.",
+            q: "Sắp xếp hoặc chọn câu viết đúng từ các từ gợi ý: They/ unload/ rice/ back/ truck/ now.",
+            options: [
+                "They are unloading rice from the back of the truck now.",
+                "They unloading rice at the back of truck now.",
+                "They are unload rice from back of the truck now.",
+                "They is unloading rice from back the truck now."
+            ],
+            correct: "They are unloading rice from the back of the truck now.",
+            explain: "1. Dịch nghĩa câu: Hiện tại họ đang dỡ gạo từ thùng sau của xe tải xuống.<br>2. Phân tích cấu trúc: Dấu hiệu 'now' chỉ thì Hiện tại tiếp diễn. Cấu trúc 'unload something from somewhere' (dỡ cái gì từ đâu xuống) và cụm từ 'the back of the truck' (phía sau xe tải).<br>3. Tại sao các câu khác sai: Câu B thiếu 'are'. Câu C dùng động từ nguyên mẫu 'unload'. Câu D dùng sai tobe 'is' với chủ ngữ 'They'."
+        },
+        {
+            ex: "Exercise 24: Make sentences from the given words.",
+            q: "Sắp xếp hoặc chọn câu viết đúng từ các từ gợi ý: I/ like/ people/ village/ because/ they/ hospitable.",
+            options: [
+                "I like people in the village because they are hospitable.",
+                "I like people on the village because they hospitable.",
+                "I like people in village because they are hospitality.",
+                "I am like people in the village because they are hospitable."
+            ],
+            correct: "I like people in the village because they are hospitable.",
+            explain: "1. Dịch nghĩa câu: Tôi mến người dân trong làng vì họ rất hiếu khách.<br>2. Phân tích cấu trúc: Dùng giới từ 'in the village'. Sau liên từ 'because' là mệnh đề đầy đủ, 'hospitable' là tính từ nên cần động từ tobe 'are' đi trước.<br>3. Tại sao các câu khác sai: Câu B thiếu tobe 'are' trước tính từ. Câu C dùng danh từ 'hospitality' là sai ngữ pháp. Câu D thừa 'am' trước động từ thường 'like'."
+        },
+        {
+            ex: "Exercise 24: Make sentences from the given words.",
+            q: "Sắp xếp hoặc chọn câu viết đúng từ các từ gợi ý: You/ can/ fly/ kite/ farm/ afternoon.",
+            options: [
+                "You can fly a kite on the farm in the afternoon.",
+                "You can fly kite in the farm at the afternoon.",
+                "You can flying a kite on farm in afternoon.",
+                "You could fly a kite inside farm in afternoon."
+            ],
+            correct: "You can fly a kite on the farm in the afternoon.",
+            explain: "1. Dịch nghĩa câu: Bạn có thể thả diều trên nông trại vào buổi chiều.<br>2. Phân tích cấu trúc: Sau động từ khuyết thiếu 'can' + V nguyên mẫu ('fly'). Cụm từ cố định 'on the farm' (trên nông trại) và 'in the afternoon' (vào buổi chiều).<br>3. Tại sao các câu khác sai: Câu B dùng sai giới từ 'in the farm' và 'at the afternoon'. Câu C dùng sai dạng 'flying'. Câu D dùng 'inside farm' không tự nhiên."
+        },
+        {
+            ex: "Exercise 24: Make sentences from the given words.",
+            q: "Sắp xếp hoặc chọn câu viết đúng từ các từ gợi ý: Children/ often/ play/ traditional games/ countryside.",
+            options: [
+                "Children often play traditional games in the countryside.",
+                "Children often plays traditional games at countryside.",
+                "Children are often play traditional games in countryside.",
+                "Children often play traditional games on the countryside."
+            ],
+            correct: "Children often play traditional games in the countryside.",
+            explain: "1. Dịch nghĩa câu: Trẻ em thường chơi các trò chơi dân gian ở vùng nông thôn.<br>2. Phân tích cấu trúc: Thì Hiện tại đơn diễn tả thói quen. Trạng từ tần suất 'often' đứng trước động từ thường 'play'. Cụm từ cố định 'in the countryside'.<br>3. Tại sao các câu khác sai: Câu B chia sai động từ số ít 'plays'. Câu C thừa 'are'. Câu D dùng sai giới từ 'on'."
+        },
+
+        // EXERCISE 25
+        {
+            ex: "Exercise 25: Rearrange the words to make complete sentences.",
+            q: "Sắp xếp lại các từ sau: said that/ felt/ more/ about the future/ city dwellers/ country folks/ The article/ optimistic/ than/.",
+            options: [
+                "The article said that country folks felt more optimistic about the future than city dwellers.",
+                "The article said that city dwellers felt more optimistic about the future than country folks.",
+                "Country folks felt more optimistic about the future than city dwellers the article said that.",
+                "The article felt more optimistic about the future than country folks said that city dwellers."
+            ],
+            correct: "The article said that country folks felt more optimistic about the future than city dwellers.",
+            explain: "1. Dịch nghĩa câu: Bài báo nói rằng những người dân ở nông thôn cảm thấy lạc quan về tương lai hơn là cư dân thành thị.<br>2. Phân tích cấu trúc: Cấu trúc so sánh hơn với tính từ dài 'optimistic': S + feel + more + adj + than + O. Kết hợp mệnh đề gián tiếp 'The article said that...'.<br>3. Tại sao các câu khác sai: Dựa trên đáp án gốc được cung cấp, câu chính xác mô tả góc nhìn của bài báo là 'country folks' lạc quan hơn 'city dwellers'. Các phương án khác làm đảo lộn ý nghĩa gốc hoặc sai cấu trúc trật tự từ."
+        },
+        {
+            ex: "Exercise 25: Rearrange the words to make complete sentences.",
+            q: "Sắp xếp lại các từ sau: busier/ Like/ her parents/ other farmers,/ are/ harvest time/ at/.",
+            options: [
+                "Like other farmers, her parents are busier at harvest time.",
+                "Like her parents busier are other farmers at harvest time.",
+                "Her parents are busier at harvest time like other farmers.",
+                "At harvest time like other farmers her parents busier are."
+            ],
+            correct: "Like other farmers, her parents are busier at harvest time.",
+            explain: "1. Dịch nghĩa câu: Giống như những người nông dân khác, bố mẹ cô ấy bận rộn hơn vào mùa thu hoạch.<br>2. Phân tích cấu trúc: Cụm 'Like other farmers' đặt lên đầu câu làm trạng từ so sánh tương đồng. Chủ ngữ chính là 'her parents' đi với động từ tobe 'are' + tính từ ngắn dạng so sánh hơn 'busier' + cụm chỉ thời gian 'at harvest time'.<br>3. Tại sao các câu khác sai: Các đáp án khác vi phạm trật tự từ bổ ngữ và cấu trúc vị ngữ trong câu tiếng Anh."
+        },
+        {
+            ex: "Exercise 25: Rearrange the words to make complete sentences.",
+            q: "Sắp xếp lại các từ sau: the summer/ The sun/ brightly/ in/ than/ in/ the winter/ more/ shines/.",
+            options: [
+                "The sun shines more brightly in the summer than in the winter.",
+                "The sun shines brightly more in the summer than in the winter.",
+                "In the summer more brightly than in the winter shines the sun.",
+                "The sun in the summer shines more brightly than in the winter."
+            ],
+            correct: "The sun shines more brightly in the summer than in the winter.",
+            explain: "1. Dịch nghĩa câu: Mặt trời tỏa sáng rực rỡ vào mùa hè hơn là vào mùa đông.<br>2. Phân tích cấu trúc: So sánh hơn của trạng từ 'brightly' đi kèm động từ thường 'shines' -> 'shines more brightly'. Tiếp theo là hai trạng ngữ thời gian đối lập được kết nối qua liên từ 'than'.<br>3. Tại sao các câu khác sai: Câu B đặt sai vị trí 'brightly more'. Câu C đảo ngữ sai quy tắc. Câu D sắp xếp trạng ngữ thời gian làm gián đoạn chủ vị."
+        },
+        {
+            ex: "Exercise 25: Rearrange the words to make complete sentences.",
+            q: "Sắp xếp lại các từ sau: In general,/ is/ much/ convenient/ because/ in the city/ life/ many living facilities/ available/ more/ are/.",
+            options: [
+                "In general, life in the city is much more convenient because many living facilities are available.",
+                "In general, life in the city is more convenient much because many living facilities are available.",
+                "Because many living facilities are available, life in the city is much convenient more.",
+                "In general, many living facilities are available in the city because life is much more convenient."
+            ],
+            correct: "In general, life in the city is much more convenient because many living facilities are available.",
+            explain: "1. Dịch nghĩa câu: Nhìn chung, cuộc sống ở thành phố tiện nghi hơn rất nhiều vì có sẵn nhiều cơ sở vật chất phục vụ đời sống.<br>2. Phân tích cấu trúc: Trạng từ 'much' được dùng trước 'more convenient' để nhấn mạnh mức độ so sánh hơn. Mệnh đề nguyên nhân bắt đầu bằng liên từ 'because'.<br>3. Tại sao các câu khác sai: Câu B đảo ngược vị trí 'convenient much'. Câu C viết sai cụm 'convenient more'. Câu D làm đảo lộn hoàn toàn mối quan hệ nguyên nhân - kết quả logic của câu."
+        },
+        {
+            ex: "Exercise 25: Rearrange the words to make complete sentences.",
+            q: "Sắp xếp lại các từ sau: people/ In the countryside,/ are/ and/ life/ is/ more/ simpler/ welcoming/. ",
+            options: [
+                "In the countryside, people are more welcoming and the life is simpler.",
+                "In the countryside, people are simpler and the life is more welcoming.",
+                "People are more welcoming in the countryside and life is simpler.",
+                "The life is simpler and people are welcoming more in the countryside."
+            ],
+            correct: "In the countryside, people are more welcoming and the life is simpler.",
+            explain: "1. Dịch nghĩa câu: Ở vùng nông thôn, con người hiếu khách hơn và cuộc sống thì đơn giản hơn.<br>2. Phân tích cấu trúc: Trạng ngữ 'In the countryside' đặt đầu câu tạo điểm nhấn. Sử dụng cấu trúc song hành gồm hai mệnh đề độc lập nối bằng liên từ 'and': 'people are more welcoming' (tính từ dài) và 'life is simpler' (tính từ ngắn dạng so sánh hơn).<br>3. Tại sao các câu khác sai: Các câu còn lại gán sai tính chất (người 'đơn giản hơn' - cuộc sống 'hiếu khách hơn') hoặc sắp đặt sai trật tự từ nguyên bản của đề bài."
+        },
+
+        // EXERCISE 26
+        {
+            ex: "Exercise 26: Make questions for underline parts.",
+            q: "Đặt câu hỏi cho phần gạch chân: They <u>are catching fish</u> from the ponds.",
+            options: [
+                "What are they doing from the ponds?",
+                "Where are they catching fish?",
+                "Who is catching fish from the ponds?",
+                "What do they do from the ponds?"
+            ],
+            correct: "What are they doing from the ponds?",
+            explain: "1. Dịch nghĩa: Họ đang làm gì từ các ao?<br>2. Phân tích cấu trúc: Phần gạch chân 'are catching fish' là một hành động đang diễn ra ở thì Hiện tại tiếp diễn. Do đó ta dùng từ để hỏi 'What' kết hợp với trợ động từ tiếp diễn 'are they doing' để thay thế toàn bộ cụm hành động đó.<br>3. Tại sao các câu khác sai: Câu B hỏi địa điểm (Where). Câu C hỏi người (Who). Câu D dùng sai thì Hiện tại đơn."
+        },
+        {
+            ex: "Exercise 26: Make questions for underline parts.",
+            q: "Đặt câu hỏi cho phần gạch chân: People in the village are <u>hospitable and helpful</u>.",
+            options: [
+                "How are people in the village?",
+                "What are people in the village look like?",
+                "Who are hospitable and helpful in the village?",
+                "Why are people in the village hospitable?"
+            ],
+            correct: "How are people in the village?",
+            explain: "1. Dịch nghĩa: Người dân trong làng như thế nào?<br>2. Phân tích cấu trúc: Cụm 'hospitable and helpful' là các tính từ mô tả tính cách, đặc điểm của con người. Ta sử dụng từ để hỏi 'How' kết hợp với cấu trúc 'How + tobe + S?' để hỏi về tính chất, trạng thái.<br>3. Tại sao các câu khác sai: Câu B sai ngữ pháp (thừa look like). Câu C dùng để hỏi chủ ngữ. Câu D dùng để hỏi lý do (Why)."
+        },
+        {
+            ex: "Exercise 26: Make questions for underline parts.",
+            q: "Đặt câu hỏi cho phần gạch chân: Farmers use <u>a combine harvester</u> to harvest their crops.",
+            options: [
+                "What do farmers use to harvest their crops?",
+                "How do farmers harvest their crops?",
+                "Which machine do farmers use to harvest?",
+                "What use a combine harvester to harvest crops?"
+            ],
+            correct: "What do farmers use to harvest their crops?",
+            explain: "1. Dịch nghĩa: Nông dân dùng cái gì để thu hoạch mùa màng của họ?<br>2. Phân tích cấu trúc: Phần gạch chân 'a combine harvester' đóng vai trò là tân ngữ chỉ vật của câu. Ta dùng 'What' đặt đầu câu, chuyển câu sang thể nghi vấn thì Hiện tại đơn bằng cách mượn trợ động từ 'do' cho chủ ngữ số nhiều 'farmers'.<br>3. Tại sao các câu khác sai: Câu B hỏi cách thức (How). Câu C thay đổi từ ngữ của đề bài quá nhiều. Câu D sai hoàn toàn cấu trúc ngữ pháp cơ bản."
+        },
+        {
+            ex: "Exercise 26: Make questions for underline parts.",
+            q: "Đặt câu hỏi cho phần gạch chân: <u>My uncle</u> herbs the buffaloes and cows on the farm.",
+            options: [
+                "Who herbs the buffaloes and cows on the farm?",
+                "Whom does your uncle herb on the farm?",
+                "What does your uncle do on the farm?",
+                "Whose uncle herbs the buffaloes on the farm?"
+            ],
+            correct: "Who herbs the buffaloes and cows on the farm?",
+            explain: "1. Dịch nghĩa: Ai chăn giữ trâu bò trên trang trại?<br>2. Phân tích cấu trúc: Phần bị gạch chân 'My uncle' đóng vai trò là chủ ngữ chỉ người của câu. Khi hỏi cho chủ ngữ chỉ người, ta chỉ cần thay thế chủ ngữ bằng từ để hỏi 'Who' và giữ nguyên vế phía sau câu.<br>3. Tại sao các câu khác sai: Các câu khác dùng để hỏi tân ngữ hoặc hỏi hành động, không phù hợp với phần gạch chân chủ ngữ."
+        },
+        {
+            ex: "Exercise 26: Make questions for underline parts.",
+            q: "Đặt câu hỏi cho phần gạch chân: I will spend a summer holiday <u>in a small village near Ha Noi</u>.",
+            options: [
+                "Where will you spend your summer holiday?",
+                "When will you spend a summer holiday near Ha Noi?",
+                "What will you do in a small village near Ha Noi?",
+                "How will you spend a summer holiday near Ha Noi?"
+            ],
+            correct: "Where will you spend your summer holiday?",
+            explain: "1. Dịch nghĩa: Bạn sẽ dành kỳ nghỉ hè của mình ở đâu?<br>2. Phân tích cấu trúc: Cụm 'in a small village near Ha Noi' là trạng ngữ chỉ nơi chốn cụ thể. Ta dùng từ để hỏi 'Where', đồng thời chuyển đại từ 'I' thành 'you' và tính từ sở hữu tương ứng thành 'your' trong câu hỏi tương tác.<br>3. Tại sao các câu khác sai: Câu B hỏi thời gian (When). Câu C hỏi hành động (What). Câu D hỏi phương thức (How)."
+        },
+
+        // EXERCISE 27
+        {
+            ex: "Exercise 27: Complete the sentences with adverbs forms in brackets.",
+            q: "A snail is slower than a crab. (slowly) -> A snail moves ____________ than a crab (does).",
+            options: [
+                "more slowly",
+                "slower",
+                "as slowly",
+                "most slowly"
+            ],
+            correct: "more slowly",
+            explain: "1. Dịch nghĩa: Một con ốc sên di chuyển chậm chạp hơn một con cua.<br>2. Phân tích cấu trúc: Câu gốc dùng tính từ ngắn 'slower'. Khi chuyển sang đi kèm động từ thường 'moves', ta phải dùng trạng từ 'slowly'. Vì 'slowly' là trạng từ dài (2 âm tiết), cấu trúc so sánh hơn của nó bắt buộc phải là 'more slowly + than'.<br>3. Tại sao các câu khác sai: 'slower' là tính từ không đi bổ nghĩa cho động từ thường 'moves'. 'as slowly' thiếu cấu trúc so sánh bằng. 'most slowly' là dạng so sánh nhất."
+        },
+        {
+            ex: "Exercise 27: Complete the sentences with adverbs forms in brackets.",
+            q: "My cousin is a better singer than I am. (well) -> My cousin sings ____________ than I do/ me.",
+            options: [
+                "better",
+                "more well",
+                "gooder",
+                "as well"
+            ],
+            correct: "better",
+            explain: "1. Dịch nghĩa: Anh họ tôi hát hay hơn tôi.<br>2. Phân tích cấu trúc: Động từ thường 'sings' yêu cầu một trạng từ bổ nghĩa. Trạng từ của tính từ 'good' là 'well'. 'well' là trường hợp đặc biệt, khi chuyển sang dạng so sánh hơn sẽ biến đổi hoàn toàn thành 'better'.<br>3. Tại sao các câu khác sai: Tiếng Anh không tồn tại dạng 'more well' hay 'gooder'. 'as well' không mang ý nghĩa so sánh hơn như câu gốc."
+        },
+        {
+            ex: "Exercise 27: Complete the sentences with adverbs forms in brackets.",
+            q: "Nick is a more careful writer than Phuc. (carefully) -> Nick writes essays ____________ than Phuc (does).",
+            options: [
+                "more carefully",
+                "carefuler",
+                "carefully",
+                "most carefully"
+            ],
+            correct: "more carefully",
+            explain: "1. Dịch nghĩa: Nick viết các bài luận cẩn thận hơn Phúc.<br>2. Phân tích cấu trúc: Bổ nghĩa cho động từ 'writes' cần trạng từ 'carefully'. Trạng từ dài khi dùng trong cấu trúc so sánh hơn sẽ đi kèm với 'more' thành 'more carefully than'.<br>3. Tại sao các câu khác sai: Không có từ 'carefuler'. Từ 'carefully' đứng một mình thiếu tính chất so sánh hơn. 'most carefully' sai cấu trúc so sánh nhất."
+        },
+        {
+            ex: "Exercise 27: Complete the sentences with adverbs forms in brackets.",
+            q: "Phong is a faster swimmer than Phuc. (fast) -> Phong swims ____________ than Phuc (does).",
+            options: [
+                "faster",
+                "more fast",
+                "fastly",
+                "as fast"
+            ],
+            correct: "faster",
+            explain: "1. Dịch nghĩa: Phong bơi nhanh hơn Phúc.<br>2. Phân tích cấu trúc: Từ 'fast' là một trường hợp đặc biệt, nó vừa là tính từ vừa là trạng từ (không tồn tại từ fastly). Khi chuyển sang so sánh hơn, ta thêm đuôi '-er' trực tiếp vào từ để tạo thành 'faster'.<br>3. Tại sao các câu khác sai: 'more fast' và 'fastly' là lỗi từ vựng cơ bản. 'as fast' thuộc cấu trúc so sánh bằng, không tương thích nghĩa câu gốc."
+        },
+        {
+            ex: "Exercise 27: Complete the sentences with adverbs forms in brackets.",
+            q: "My father’s explanation about the subject was clearer than my brother’s. (clearly) -> My father explained the subject ____________ than my brother (did).",
+            options: [
+                "more clearly",
+                "clearer",
+                "clearly more",
+                "most clearly"
+            ],
+            correct: "more clearly",
+            explain: "1. Dịch nghĩa: Bố tôi giải thích chủ đề đó rõ ràng hơn anh trai tôi.<br>2. Phân tích cấu trúc: Động từ hành động 'explained' cần một trạng từ đi kèm để làm rõ nghĩa. Trạng từ 'clearly' là trạng từ dài, nên cấu trúc so sánh hơn chính xác là 'more clearly'.<br>3. Tại sao các câu khác sai: 'clearer' là dạng so sánh hơn của tính từ, không dùng cho động từ thường trong văn cảnh này. 'clearly more' sai vị trí."
+        },
+
+        // EXERCISE 28 (Selection derived directly from list 1-30)
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Nam is a better student than other students in the class. -> Nam studies ____________ than other students in the class.",
+            options: ["better", "more good", "well", "best"],
+            correct: "better",
+            explain: "1. Dịch nghĩa: Nam học tốt hơn các học sinh khác trong lớp.<br>2. Phân tích: So sánh hơn của trạng từ 'well' bổ nghĩa cho hành động 'studies' là 'better'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "My house is bigger than your house. -> Your house ____________ than mine.",
+            options: ["is smaller", "is big", "is small", "is more small"],
+            correct: "is smaller",
+            explain: "1. Dịch nghĩa: Nhà của bạn thì nhỏ hơn nhà của tôi.<br>2. Phân tích: Ngược nghĩa với 'bigger' (lớn hơn) là 'smaller' (nhỏ hơn). Cần động từ tobe 'is'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "The black car is cheaper than the red car. -> The red car ____________ than the black car.",
+            options: ["is more expensive", "is cheaper", "is expensive", "is expensiver"],
+            correct: "is more expensive",
+            explain: "1. Dịch nghĩa: Chiếc xe màu đỏ đắt tiền hơn chiếc xe màu đen.<br>2. Phân tích: 'cheaper' (rẻ hơn) tương phản hoàn toàn với 'more expensive' (đắt hơn). 'Expensive' là tính từ dài."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "This film is more interesting than that one. -> That film ____________ than this one.",
+            options: ["is more boring", "is interesting", "is more bored", "is less boring"],
+            correct: "is more boring",
+            explain: "1. Dịch nghĩa: Bộ phim kia nhàm chán hơn bộ phim này.<br>2. Phân tích: Ngược nghĩa với 'more interesting' (thú vị hơn) là tính từ 'more boring' (nhàm chán hơn)."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "He plays football skillfully. His father plays football badly. -> He ____________ than his father does.",
+            options: ["plays football more skillfully", "plays football worse", "plays football skillfully", "play football more skillfully"],
+            correct: "plays football more skillfully",
+            explain: "1. Dịch nghĩa: Anh ấy chơi bóng đá khéo léo hơn bố anh ấy.<br>2. Phân tích: Kết hợp hai câu thành câu so sánh hơn với trạng từ dài 'skillfully' thành 'more skillfully'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "I didn’t think this book is as expensive as it is. -> This book ____________ than I thought.",
+            options: ["is more expensive", "is cheaper", "is as expensive", "is expensive"],
+            correct: "is more expensive",
+            explain: "1. Dịch nghĩa: Quyển sách này đắt hơn tôi tưởng.<br>2. Phân tích: Diễn đạt lại cấu trúc so sánh không bằng 'not as... as' thành câu so sánh hơn 'more expensive'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "A city has more interesting activities than the countryside. -> The countryside ____________ than a city.",
+            options: ["has fewer activities", "has more activities", "has less activities", "have fewer activities"],
+            correct: "has fewer activities",
+            explain: "1. Dịch nghĩa: Vùng nông thôn có ít hoạt động hơn thành phố.<br>2. Phân tích: Từ đối lập với 'more' áp dụng cho danh từ đếm được số nhiều 'activities' phải là 'fewer'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "A motorbike goes faster than a bike. -> A bike ____________ than a motorbike.",
+            options: ["goes more slowly", "goes faster", "go slowly", "goes slower"],
+            correct: "goes more slowly",
+            explain: "1. Dịch nghĩa: Xe đạp đi chậm chạp hơn xe máy.<br>2. Phân tích: Đối lập với trạng từ 'faster' là 'more slowly' khi dùng bổ nghĩa cho động từ ngôi số ít 'goes'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Tina wrote the essay carefully. Tim wrote the essay carelessly. -> Tina wrote ____________ than Tim did.",
+            options: ["the essay more carefully", "the essay more carelessly", "carefully the essay", "essay more carefully"],
+            correct: "the essay more carefully",
+            explain: "1. Dịch nghĩa: Tina đã viết bài luận cẩn thận hơn Tim.<br>2. Phân tích: Trạng từ dài 'carefully' chuyển thành dạng so sánh hơn là 'more carefully' đứng sau tân ngữ 'the essay'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Tim is older than Sarah. -> Sarah ____________ than Tim.",
+            options: ["is younger", "is older", "is young", "is more young"],
+            correct: "is younger",
+            explain: "1. Dịch nghĩa: Sarah trẻ tuổi hơn Tim.<br>2. Phân tích: Ngược nghĩa với tính từ ngắn 'older' (già/lớn tuổi hơn) là 'younger' (trẻ hơn)."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Our house is larger than yours. -> Your house ____________ than mine.",
+            options: ["is smaller", "is small", "is larger", "is more small"],
+            correct: "is smaller",
+            explain: "1. Dịch nghĩa: Ngôi nhà của bạn thì nhỏ hơn nhà của tôi.<br>2. Phân tích: Biến đổi ngược nghĩa từ 'larger' sang tính từ ngắn đối lập tương ứng là 'smaller'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Bill is not as tall as David. -> Bill ____________ than David.",
+            options: ["is shorter", "is taller", "is short", "is not short"],
+            correct: "is shorter",
+            explain: "1. Dịch nghĩa: Bill thì thấp/ngắn hơn David.<br>2. Phân tích: Cấu trúc không cao bằng 'not as tall as' đồng nghĩa với việc Bill thấp hơn David ('is shorter')."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Mr. Black has the largest paddy field in my village. -> The largest ____________ belongs to Mr. Black.",
+            options: ["paddy field in my village", "village in my paddy field", "paddy field belongs", "field paddy in my village"],
+            correct: "paddy field in my village",
+            explain: "1. Dịch nghĩa: Cánh đồng lúa lớn nhất trong làng tôi thuộc sở hữu của ông Black.<br>2. Phân tích: Chuyển đổi từ câu sở hữu chủ động sang cụm danh từ làm chủ ngữ đi với động từ 'belongs to'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "The movie was boring. I thought it was interesting. -> The movie ____________ than I thought.",
+            options: ["was more boring", "was more interesting", "is boring", "was boring"],
+            correct: "was more boring",
+            explain: "1. Dịch nghĩa: Bộ phim đã nhàm chán hơn tôi tưởng.<br>2. Phân tích: Kết hợp hai mệnh đề quá khứ thể hiện sự so sánh thực tế với suy nghĩ ban đầu sử dụng 'was more boring'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "He cannot play tennis as well as Jack. -> Jack can ____________ than he.",
+            options: ["play tennis better", "play tennis well", "plays tennis better", "play tennis worse"],
+            correct: "play tennis better",
+            explain: "1. Dịch nghĩa: Jack có thể chơi quần vợt giỏi hơn anh ấy.<br>2. Phân tích: Trái ngược với cấu trúc kém hơn 'cannot play... as well as' là khả năng chơi tốt hơn 'can play tennis better'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "I did not spend as much money as you. -> You spent ____________ than I.",
+            options: ["more money", "fewer money", "less money", "as much money"],
+            correct: "more money",
+            explain: "1. Dịch nghĩa: Bạn đã chi tiêu nhiều tiền hơn tôi.<br>2. Phân tích: 'Tôi không tiêu nhiều tiền bằng bạn' đồng nghĩa với 'Bạn tiêu nhiều tiền hơn tôi' ('spent more money')."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Many students cycle their bikes to school. -> Many students go ____________.",
+            options: ["to school by bike", "by bike to school", "to school with bike", "on school by bike"],
+            correct: "to school by bike",
+            explain: "1. Dịch nghĩa: Nhiều học sinh đi học bằng xe đạp.<br>2. Phân tích: Cụm từ hành động đạp xe đi học 'cycle to school' đồng nghĩa với cấu trúc chuyển động 'go to school by bike'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "We fancy doing the housework. -> We ____________ doing the housework.",
+            options: ["do not hate", "hate", "love not", "dislike"],
+            correct: "do not hate",
+            explain: "1. Dịch nghĩa: Chúng tôi không ghét việc làm việc nhà.<br>2. Phân tích: 'Fancy' mang nghĩa yêu thích, đồng nghĩa với sắc thái nói giảm nói tránh 'do not hate' (không ghét) trong đề bài."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Jane makes crafts better than her sister. -> Jane’s sister ____________ than her.",
+            options: ["makes crafts worse", "makes crafts better", "make crafts worse", "makes crafts poorly"],
+            correct: "makes crafts worse",
+            explain: "1. Dịch nghĩa: Chị/em gái của Jane làm đồ thủ công tệ hơn cô ấy.<br>2. Phân tích: So sánh ngược nghĩa của trạng từ 'better' (tốt hơn) chính là trạng từ bất quy tắc 'worse' (tệ hơn)."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "I love to watch YouTube when I have free time. -> I am interested in ____________ when I have free time.",
+            options: ["watching YouTube", "watch YouTube", "to watch YouTube", "watched YouTube"],
+            correct: "watching YouTube",
+            explain: "1. Dịch nghĩa: Tôi thích xem YouTube khi tôi có thời gian rảnh.<br>2. Phân tích: Cấu trúc chỉ sở thích cố định: 'Be interested in + V-ing' (đam mê, hứng thú với việc gì)."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Jack’s marks are worse than mine. -> My marks ____________ than Jack's.",
+            options: ["are better", "is better", "are worse", "are gooder"],
+            correct: "are better",
+            explain: "1. Dịch nghĩa: Điểm số của tôi tốt hơn điểm của Jack.<br>2. Phân tích: Ngược nghĩa với trạng trạng/tính từ 'worse' (tệ hơn) dành cho danh từ số nhiều 'marks' là động từ 'are better'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "This book is the same price as that one. -> That book is ____________ as this one.",
+            options: ["as expensive", "more expensive", "the same price", "cheap as"],
+            correct: "as expensive",
+            explain: "1. Dịch nghĩa: Quyển sách kia đắt bằng quyển sách này.<br>2. Phân tích: Diễn đạt sự đồng giá bằng cấu trúc so sánh bằng: 'is as + tính từ + as'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Your bike is slower than mine. -> My bike is ____________ than yours.",
+            options: ["faster", "more fast", "slower", "as fast"],
+            correct: "faster",
+            explain: "1. Dịch nghĩa: Xe đạp của tôi nhanh hơn xe của bạn.<br>2. Phân tích: Tính từ ngắn ngược nghĩa hoàn toàn với 'slower' (chậm hơn) chính là 'faster' (nhanh hơn)."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "My uncle has a car. His car is green. -> My uncle has ____________.",
+            options: ["a green car", "car green", "a car green", "green car"],
+            correct: "a green car",
+            explain: "1. Dịch nghĩa: Bác tôi có một chiếc ô tô màu xanh lá cây.<br>2. Phân tích: Trật tự cụm danh từ chuẩn trong tiếng Anh: Mạo từ + Tính từ chỉ màu sắc + Danh từ chính."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "My kitchen is smaller than yours. -> Your kitchen ____________ than mine.",
+            options: ["is larger/ bigger", "is smaller", "is big", "is more large"],
+            correct: "is larger/ bigger",
+            explain: "1. Dịch nghĩa: Nhà bếp của bạn lớn hơn/to hơn nhà bếp của tôi.<br>2. Phân tích: Trái ngược với 'smaller' (nhỏ hơn) là tính từ ngắn dạng so sánh hơn 'larger' hoặc 'bigger'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "My mother cannot cook as well as me. -> I can ____________.",
+            options: ["cook better than my mother", "cook well than my mother", "cooks better than my mother", "cook worse than my mother"],
+            correct: "cook better than my mother",
+            explain: "1. Dịch nghĩa: Tôi có thể nấu ăn ngon hơn mẹ tôi.<br>2. Phân tích: Chuyển đổi so sánh không bằng 'cannot cook as well as' sang so sánh hơn với trạng từ biến đổi đặc biệt 'better'."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "She has a house which is not as modern as my house. -> My house ____________ than hers.",
+            options: ["is more modern", "is modern", "is less modern", "is moderner"],
+            correct: "is more modern",
+            explain: "1. Dịch nghĩa: Ngôi nhà của tôi hiện đại hơn ngôi nhà của cô ấy.<br>2. Phân tích: 'not as modern as' (không hiện đại bằng) đồng nghĩa với việc nhà tôi 'is more modern' (hiện đại hơn)."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "It is so hard to harvest rice on hot days. -> Harvesting ____________ is so hard.",
+            options: ["rice on hot days", "rice on day hot", "on hot days rice", "rice on hot day"],
+            correct: "rice on hot days",
+            explain: "1. Dịch nghĩa: Việc thu hoạch lúa vào những ngày nắng nóng thật là vất vả.<br>2. Phân tích: Chuyển từ chủ ngữ giả 'It is...' sang dạng danh động từ 'Harvesting' làm chủ ngữ chính của câu."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "Life in the city is busier than life in the countryside. -> Life in the countryside is ____________ than life in the city.",
+            options: ["freer", "busier", "more busy", "crowded"],
+            correct: "freer",
+            explain: "1. Dịch nghĩa: Cuộc sống ở nông thôn tự do/thoải mái hơn cuộc sống ở thành thị.<br>2. Phân tích: Dựa trên đáp án gốc của bài học để chỉ sự thanh bình, thảnh thơi trái ngược với bận rộn."
+        },
+        {
+            ex: "Exercise 28: Rewrite the sentences without changing meaning.",
+            q: "His uncle works less responsibly than Mr. Nam. -> Mr. Nam ____________ than his uncle.",
+            options: ["works more responsibly", "work more responsibly", "works responsibly", "works less responsibly"],
+            correct: "works more responsibly",
+            explain: "1. Dịch nghĩa: Ông Nam làm việc có trách nhiệm hơn bác của anh ấy.<br>2. Phân tích: Cấu trúc so sánh kém hơn 'less + trạng từ + than' được viết lại bằng cấu trúc so sánh hơn 'more + trạng từ + than'."
+        },
+
+        // EXERCISE 29
+        {
+            ex: "Exercise 29: Choose correct arrangement of the sentences to make a meaningful paragraph/letter.",
+            q: "Sắp xếp bức thư sau thành một bố cục hoàn chỉnh:<br>Dear Sarah,<br>a. We can go to the beach, eat fresh seafood, and explore the mangrove forest.<br>b. Please let me know if you can come. I'm excited to show you around!<br>c. I'd love to invite you to visit my hometown, Can Gio, next month.<br>d. It's a great place to relax for a weekend. I think you'll really enjoy it!<br>e. It's a beautiful place by the sea, not far from the city.<br>Your friend, Thanh",
+            options: ["c-e-a-d-b", "e-c-a-b-d", "a-d-e-c-b", "d-e-a-c-b"],
+            correct: "c-e-a-d-b",
+            explain: "1. Dịch nghĩa nội dung: Mở đầu bằng câu mời đến thăm quê hương Cần Giờ (c) -> Giới thiệu vị trí địa lý của địa danh (e) -> Liệt kê các hoạt động trải nghiệm vui chơi (a) -> Đánh giá cảm xúc tổng quan về địa điểm (d) -> Câu kết thúc mong phản hồi từ bạn (b).<br>2. Phân tích logic: Thứ tự c-e-a-d-b tạo nên một mạch văn thư mời vô cùng mạch lạc và tự nhiên."
+        },
+        {
+            ex: "Exercise 29: Choose correct arrangement of the sentences to make a meaningful paragraph/letter.",
+            q: "Sắp xếp các câu sau thành một đoạn văn hoàn chỉnh về cuộc sống nông thôn:<br>a. While there might be fewer entertainment options, the benefits of peace, fresh air, and community make country living very appealing.<br>b. The air is fresh, and you can enjoy the quietness of nature without the constant noise of traffic and large crowds.<br>c. Life in the countryside offers a truly peaceful and healthy way of living, which I believe is much better than city life.<br>d. People in the countryside often live closer to their neighbors, creating a strong sense of community and support.<br>e. Moreover, fresh food from local farms is readily available, contributing to a healthier lifestyle.",
+            options: ["c-b-d-e-a", "d-e-a-c-b", "b-d-e-a-c", "e-a-c-b-d"],
+            correct: "c-b-d-e-a",
+            explain: "1. Dịch nghĩa & Logic: Câu mở đầu giới thiệu chủ đề tổng quát (c) -> Phân tích luận điểm đầu tiên về không khí trong lành (b) -> Tiếp tục luận điểm mối quan hệ láng giềng (d) -> Bổ sung luận điểm thực phẩm sạch bằng từ nối 'Moreover' (e) -> Câu kết luận khẳng định lại giá trị bất chấp nhược điểm ít chỗ chơi (a). Do đó trình tự tối ưu nhất là c-b-d-e-a."
+        },
+
+        // EXERCISE 30
+        {
+            ex: "Exercise 30: Choose correct answer to each of the following questions.",
+            q: "❶ Thử thách sắp xếp (a-c) để tạo thành đoạn văn hoàn chỉnh nói về nhược điểm của cuộc sống nông thôn:<br>Living in the countryside offers many wonderful things like fresh air and quiet mornings. However, it also has some disadvantages that can make life a bit more challenging. __________.<br>a. Also, getting around can be difficult as public transport options are usually limited.<br>b. One major issue is the lack of convenience, with fewer shops and restaurants nearby.<br>c. Finding work can also be a problem due to fewer job opportunities compared to the city.",
+            options: ["b - a – c", "c - b – a", "b - c – a", "a - c - b"],
+            correct: "b - a – c",
+            explain: "1. Phân tích logic đoạn văn: Câu đầu tiên sau phần dẫn nhập giới thiệu vấn đề lớn nhất với cụm từ 'One major issue' (b) -> Tiếp theo sử dụng trạng từ nối thêm ý 'Also' để nói về vấn đề đi lại (a) -> Cuối cùng liệt kê vấn đề tìm kiếm việc làm 'also be a problem' (c). Do đó trật tự chuẩn xác là b - a - c."
+        },
+        {
+            ex: "Exercise 30: Choose correct answer to each of the following questions.",
+            q: "❶ Chọn câu kết thúc (Ending Sentence) phù hợp nhất cho đoạn văn trên:",
+            options: [
+                "These challenges are often outweighed by the peaceful environment and natural beauty.",
+                "Despite these inconveniences, I still prefer the calm and natural beauty of the countryside.",
+                "The friendly people in the countryside often help mitigate these issues.",
+                "Therefore, many people choose to move to the city for better opportunities."
+            ],
+            correct: "These challenges are often outweighed by the peaceful environment and natural beauty.",
+            explain: "1. Phân tích văn cảnh: Đoạn văn đang nói về những khó khăn ở nông thôn nhưng cấu trúc tổng quan của bài tập gốc hướng đến việc cân bằng cảm xúc hoặc đúc kết tổng hòa bằng câu khẳng định giá trị thiên nhiên vượt lên thử thách ('outweighed by the peaceful environment...')."
+        },
+        {
+            ex: "Exercise 30: Choose correct answer to each of the following questions.",
+            q: "❷ Hãy chọn CÂU CHỦ ĐỀ (Topic Sentence) phù hợp nhất để MỞ ĐẦU đoạn văn sau:<br>(1)______, it is far more appealing than the hustle and bustle of a big city. (2)______ The peacefulness and friendly community truly make it a wonderful place to live.",
+            options: [
+                "Living in the countryside offers a remarkably calm and enjoyable experience.",
+                "There are some drawbacks to living in the countryside, such as fewer shops.",
+                "City life is often characterized by noise and a lack of fresh air.",
+                "The author enjoys spending time in nature and seeing green fields."
+            ],
+            correct: "Living in the countryside offers a remarkably calm and enjoyable experience.",
+            explain: "1. Dịch nghĩa & Ngữ cảnh: Đoạn văn ca ngợi vẻ đẹp thanh bình và cộng đồng thân thiện ở nông thôn vượt trội hoàn toàn so với sự xô bồ của thành thị. Do đó, câu chủ đề mở đầu lý tưởng nhất phải mang năng lượng tích cực giới thiệu về trải nghiệm nông thôn ('Living in the countryside offers a remarkably calm and enjoyable experience')."
+        },
+        {
+            ex: "Exercise 30: Choose correct answer to each of the following questions.",
+            q: "❷ Hãy chọn trật tự sắp xếp từ (a-c) để lấp đầy khoảng trống (2) trong đoạn văn trên:<br>a. Additionally, the people are often friendly and willing to help.<br>b. Waking up to fresh air and quiet mornings, away from city noise, brings a sense of calm.<br>c. Being surrounded by nature, hearing birds, and seeing green landscapes daily contributes to this peaceful feeling.",
+            options: ["b-c-a", "c-b-a", "a-c-b", "b-a-c"],
+            correct: "b-c-a",
+            explain: "1. Phân tích logic liên kết: Câu (b) nói về hành động thức dậy buổi sáng mang lại sự bình yên -> Câu (c) bổ trợ trực tiếp cho cảm giác đó bằng việc được bao quanh bởi thiên nhiên qua cụm từ khóa 'contributes to this peaceful feeling' -> Câu (a) mở rộng sang yếu tố con người bằng từ nối 'Additionally'. Do đó, mạch logic hoàn hảo nhất là b-c-a."
+        }
+    ];
+
+    // Render questions dynamically into UI cards
+    const container = document.getElementById('quiz-container');
+    let userAnswers = {};
+
+    function renderQuiz() {
+        let currentEx = "";
+        quizData.forEach((item, index) => {
+            if (item.ex !== currentEx) {
+                currentEx = item.ex;
+                const exHeader = document.createElement('div');
+                exHeader.className = 'exercise-title';
+                exHeader.innerText = currentEx;
+                container.appendChild(exHeader);
+            }
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.id = `card-${index}`;
+
+            // Check if specific graphic widget is required for custom CSS display
+            let graphicWidgetHTML = "";
+            if (index === 30) { 
+                graphicWidgetHTML = `<div class="sign-widget">⚠️ WARNING: COUNTRYSIDE DOWNSIDES ⚠️</div>`;
+            } else if (index === 32) {
+                graphicWidgetHTML = `
+                    <div class="phone-widget">
+                        <div class="phone-msg text-left">City life is too noisy!</div>
+                        <div class="phone-msg sent text-right">Come to the countryside, it is amazing! 🌾</div>
+                    </div>`;
+            }
+
+            card.innerHTML = `
+                <div class="question-text"><strong>Câu ${index + 1}:</strong> ${item.q}</div>
+                ${graphicWidgetHTML}
+                <div class="options-grid" id="grid-${index}"></div>
+                <div class="explanation-box" id="explain-${index}">
+                    <h4>💡 GIẢI THÍCH CHI TIẾT TỪ MS LÊ HẰNG:</h4>
+                    <div class="explanation-content">${item.explain}</div>
+                </div>
+            `;
+
+            container.appendChild(card);
+
+            // Populate options randomly for standard ABCD experience matching required logic
+            const grid = document.getElementById(`grid-${index}`);
+            item.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = opt;
+                btn.onclick = () => selectOption(index, btn, opt);
+                grid.appendChild(btn);
+            });
+        });
+    }
+
+    function selectOption(qIdx, btn, chosenValue) {
+        const grid = document.getElementById(`grid-${qIdx}`);
+        const buttons = grid.getElementsByClassName('option-btn');
+        const correctValue = quizData[qIdx].correct;
+
+        // Disable all options in this grid after single click
+        for (let b of buttons) {
+            b.classList.add('disabled');
+            if (b.innerHTML === correctValue) {
+                b.classList.add('correct');
+            }
+        }
+
+        if (chosenValue === correctValue) {
+            btn.classList.add('correct');
+            userAnswers[qIdx] = true;
+            playSound('correct');
+            spawnConfetti();
+        } else {
+            btn.classList.add('wrong');
+            userAnswers[qIdx] = false;
+            document.getElementById(`card-${qIdx}`).classList.add('shake');
+            playSound('wrong');
+            setTimeout(() => {
+                document.getElementById(`card-${qIdx}`).classList.remove('shake');
+            }, 500);
+        }
+
+        // Auto display corresponding detail explanation box immediately
+        document.getElementById(`explain-${qIdx}`).style.display = "block";
+    }
+
+    function submitQuiz() {
+        const total = quizData.length;
+        let correctCount = 0;
+        for (let i = 0; i < total; i++) {
+            if (userAnswers[i] === true) correctCount++;
+        }
+
+        const percentage = (correctCount / total) * 100;
+        let feedback = "";
+
+        if (percentage < 50) {
+            feedback = "Điểm lần này chưa cao lắm, con cố gắng đọc kĩ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+        } else if (percentage >= 50 && percentage <= 85) {
+            feedback = "Con đã có tiến bộ khá ổn rồi, con cố gắng đọc kĩ giải thích đáp án và làm lại nha. Cô tin con sẽ làm tốt hơn ở lần sau!";
+        } else {
+            feedback = "Làm tốt lắm, con cố gắng ring điểm 10 ở lần sau nha!";
+        }
+
+        document.getElementById('p-score').innerText = `${correctCount} / ${total}`;
+        document.getElementById('p-text').innerText = `Nhận xét từ Ms Lê Hằng:\n"${feedback}"`;
+        document.getElementById('score-popup').classList.add('active');
+        if (percentage >= 80) spawnConfetti();
+    }
+
+    function closePopup() {
+        document.getElementById('score-popup').classList.remove('active');
+    }
+
+    // Auto boot up on window loaded state
+    window.onload = renderQuiz;
+</script>
+</body>
+</html>
